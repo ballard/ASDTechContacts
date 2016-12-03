@@ -12,6 +12,8 @@
 		2CA97D9F1DF20BF100EB3D69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CA97D9D1DF20BF100EB3D69 /* Main.storyboard */; };
 		2CA97DA11DF20BF100EB3D69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CA97DA01DF20BF100EB3D69 /* Assets.xcassets */; };
 		2CA97DA41DF20BF100EB3D69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CA97DA21DF20BF100EB3D69 /* LaunchScreen.storyboard */; };
+		2CA97DAC1DF20CC400EB3D69 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA97DAB1DF20CC400EB3D69 /* ContactsTableViewController.swift */; };
+		2CA97DB01DF2C7DC00EB3D69 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA97DAF1DF2C7DC00EB3D69 /* DetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		2CA97DA01DF20BF100EB3D69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CA97DA31DF20BF100EB3D69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CA97DA51DF20BF100EB3D69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CA97DAB1DF20CC400EB3D69 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		2CA97DAF1DF2C7DC00EB3D69 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				2CA97DA01DF20BF100EB3D69 /* Assets.xcassets */,
 				2CA97DA21DF20BF100EB3D69 /* LaunchScreen.storyboard */,
 				2CA97DA51DF20BF100EB3D69 /* Info.plist */,
+				2CA97DAB1DF20CC400EB3D69 /* ContactsTableViewController.swift */,
+				2CA97DAF1DF2C7DC00EB3D69 /* DetailTableViewController.swift */,
 			);
 			path = ASDTechContacts;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CA97D9C1DF20BF100EB3D69 /* ViewController.swift in Sources */,
+				2CA97DB01DF2C7DC00EB3D69 /* DetailTableViewController.swift in Sources */,
 				2CA97D9A1DF20BF100EB3D69 /* AppDelegate.swift in Sources */,
+				2CA97DAC1DF20CC400EB3D69 /* ContactsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
