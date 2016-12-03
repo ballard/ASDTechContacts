@@ -57,10 +57,10 @@
             </objects>
             <point key="canvasLocation" x="623.20000000000005" y="367.46626686656674"/>
         </scene>
-        <!--Detail Table View Controller-->
+        <!--Details-->
         <scene sceneID="uuK-x3-dTA">
             <objects>
-                <tableViewController id="IIO-ot-buM" customClass="DetailTableViewController" customModule="ASDTechContacts" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Details" id="IIO-ot-buM" customClass="DetailTableViewController" customModule="ASDTechContacts" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="d1y-YX-Nsm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

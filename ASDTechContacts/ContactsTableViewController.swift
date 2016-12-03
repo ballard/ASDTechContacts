@@ -18,18 +18,11 @@ struct Contact {
     
     init?(cnContract :CNContact){
         self.fullName = CNContactFormatter.string(from: cnContract, style: .fullName) ?? ""
-        for email in cnContract.emailAddresses {
-            self.emailAddresses.append(email.value as String )
-        }
-        for phoneNumber in cnContract.phoneNumbers {
-            let phoneStr = phoneNumber.value.stringValue.replacingOccurrences(of: " ", with: "")
-            print("\(phoneStr)")
-            self.phonesNumber.append(phoneStr)
-        }
-        for postAddress in cnContract.postalAddresses {
-            let addressStr = CNPostalAddressFormatter.string(from: postAddress.value, style: .mailingAddress).replacingOccurrences(of: "  ", with: " ")
-            self.addresses.append(addressStr)
-        }
+        _ = cnContract.emailAddresses.map({ self.emailAddresses.append($0.value as String)})
+        _ = cnContract.phoneNumbers.map({ self.phonesNumber.append($0.value.stringValue.replacingOccurrences(of: " ", with: ""))})
+        _ = cnContract.postalAddresses.map({ self.addresses.append(
+            CNPostalAddressFormatter.string(from: $0.value, style: .mailingAddress)
+                .replacingOccurrences(of: "  ", with: " "))})
     }
     
     func countSymbols (_ countSymbols:Int, _ string:String) -> Int {
@@ -122,7 +115,6 @@ class ContactsTableViewController: UITableViewController {
                         let contractST = Contact (cnContract: contact)
                         if let contactNew = contractST {
                             if self.contacts.index(where: {($0 as Contact).compareTo(contact: contactNew)}) == nil {
-                                
                                 DispatchQueue.main.async(execute: { () -> Void in
                                     self.contacts.append(contactNew)
                                 })
@@ -150,22 +142,18 @@ class ContactsTableViewController: UITableViewController {
             
             let contactsContact = results.flatMap({ (json) -> Contact? in return Contact.init(json: json) })
             
-            for contactNew in contactsContact  {
+            _ = contactsContact.map({ (contactNew) in
                 if self.contacts.index(where: {($0 as Contact).compareTo(contact: contactNew)}) == nil {
                     print("contact added")
                     DispatchQueue.main.async{
                         self.contacts.append(contactNew)
-                        
-                    }
-                }
-            }
+                    }}})
         })
         task.resume()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            
             if identifier == "Detail",
                 let mtvc = segue.destination as? DetailTableViewController,
                 let contactCell = sender as? UITableViewCell,
