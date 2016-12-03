@@ -52,6 +52,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="0ld-N3-sGL"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="r2h-52-qSb">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="Shg-MZ-mNa" eventType="valueChanged" id="wYV-fp-u3f"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geQ-Qz-K7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

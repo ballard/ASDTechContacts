@@ -84,6 +84,9 @@ class ContactsTableViewController: UITableViewController {
         fetchContactsFromJsonPlaceholder()
     }
     
+    @IBAction func refresh(_ sender: Any) {
+        fetchContactsFromJsonPlaceholder()
+    }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -132,13 +135,21 @@ class ContactsTableViewController: UITableViewController {
     func fetchContactsFromJsonPlaceholder () {
         let url = URL(string:"https://jsonplaceholder.typicode.com/users" )
         let request = URLRequest(url: url!)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let task = URLSession.shared.dataTask(with: request, completionHandler: {
             (data, response, error) in
             guard error == nil,
                 let d = data,
                 let json = try? JSONSerialization.jsonObject(with: d, options: .allowFragments),
                 let results = json  as? [[String : AnyObject]]
-                else { return}
+                else {
+                    self.refreshControl?.endRefreshing()
+                    return
+            }
+            
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
             
             let contactsContact = results.flatMap({ (json) -> Contact? in return Contact.init(json: json) })
             
@@ -148,6 +159,8 @@ class ContactsTableViewController: UITableViewController {
                     DispatchQueue.main.async{
                         self.contacts.append(contactNew)
                     }}})
+            self.refreshControl?.endRefreshing()
+            
         })
         task.resume()
     }
