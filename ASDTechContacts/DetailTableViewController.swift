@@ -68,7 +68,6 @@ class DetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Value", for: indexPath)
         cell.textLabel?.text = sections[indexPath.section].values[indexPath.row]
-
         return cell
     }
 

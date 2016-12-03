@@ -18,11 +18,12 @@ struct Contact {
     
     init?(cnContract :CNContact){
         self.fullName = CNContactFormatter.string(from: cnContract, style: .fullName) ?? ""
-        _ = cnContract.emailAddresses.map({ self.emailAddresses.append($0.value as String)})
-        _ = cnContract.phoneNumbers.map({ self.phonesNumber.append($0.value.stringValue.replacingOccurrences(of: " ", with: ""))})
-        _ = cnContract.postalAddresses.map({ self.addresses.append(
+        self.emailAddresses = cnContract.emailAddresses.map({ $0.value as String })
+        self.phonesNumber = cnContract.phoneNumbers.map({ $0.value.stringValue.replacingOccurrences(of: " ", with: "") })
+        self.addresses = cnContract.postalAddresses.map({
             CNPostalAddressFormatter.string(from: $0.value, style: .mailingAddress)
-                .replacingOccurrences(of: "  ", with: " "))})
+            .replacingOccurrences(of: "  ", with: " ")
+        })
     }
     
     func countSymbols (_ countSymbols:Int, _ string:String) -> Int {
@@ -155,7 +156,6 @@ class ContactsTableViewController: UITableViewController {
             
             _ = contactsContact.map({ (contactNew) in
                 if self.contacts.index(where: {($0 as Contact).compareTo(contact: contactNew)}) == nil {
-                    print("contact added")
                     DispatchQueue.main.async{
                         self.contacts.append(contactNew)
                     }}})
